@@ -4,29 +4,54 @@ import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { Star, Quotes } from "@phosphor-icons/react";
 
-const testimonials = [
+const featured = {
+  quote:
+    "EPVEOT completely transformed our office space. Their project management was flawless — they communicated at every stage, handled unexpected challenges without missing a beat, and delivered ahead of schedule. We've already contracted them for our next two projects.",
+  name: "Michael Okonkwo",
+  role: "CEO",
+  company: "Delta Construction Ltd",
+  rating: 5,
+};
+
+const others = [
   {
     quote:
-      "EPVEOT transformed our office space beyond expectations. Their attention to detail and project management was impeccable from start to finish.",
-    name: "Michael Okonkwo",
-    role: "CEO, Delta Construction Ltd",
-    rating: 5,
-  },
-  {
-    quote:
-      "We've worked with many contractors, but EPVEOT stands out for their reliability and quality. They delivered our facility upgrade on time and under budget.",
+      "We've worked with many contractors, but EPVEOT stands out for their reliability and quality. Our facility upgrade was delivered on time and under budget.",
     name: "Aisha Mohammed",
-    role: "Facility Manager, Horizon Properties",
+    role: "Facility Manager",
+    company: "Horizon Properties",
     rating: 5,
   },
   {
     quote:
-      "Professional, skilled, and genuinely committed to excellence. EPVEOT handled our industrial project with the highest standards of safety and precision.",
+      "Professional, skilled, and genuinely committed to excellence. They handled our industrial project with the highest standards of safety and precision.",
     name: "David Chen",
-    role: "Project Director, Atlas Engineering",
+    role: "Project Director",
+    company: "Atlas Engineering",
     rating: 5,
   },
 ];
+
+function Stars({ count }: { count: number }) {
+  return (
+    <div className="flex gap-0.5">
+      {Array.from({ length: count }).map((_, i) => (
+        <Star key={i} size={14} className="text-amber" weight="fill" />
+      ))}
+    </div>
+  );
+}
+
+function Initials({ name }: { name: string }) {
+  return (
+    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-navy font-heading text-sm font-bold text-white">
+      {name
+        .split(" ")
+        .map((n) => n[0])
+        .join("")}
+    </div>
+  );
+}
 
 export function Testimonials() {
   const ref = useRef(null);
@@ -36,72 +61,90 @@ export function Testimonials() {
     <section ref={ref} className="bg-muted/30 py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mx-auto max-w-2xl text-center"
+          className="max-w-xl"
         >
-          <span className="text-sm font-medium tracking-wider text-amber uppercase">
-            Testimonials
-          </span>
-          <h2 className="mt-4 font-heading text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
+          <div className="flex items-center gap-3">
+            <div className="h-px w-10 bg-amber" />
+            <span className="text-sm font-semibold tracking-widest text-amber uppercase">
+              Testimonials
+            </span>
+          </div>
+          <h2 className="mt-5 font-heading text-3xl font-extrabold text-foreground sm:text-4xl lg:text-5xl">
             What Our Clients Say
           </h2>
-          <p className="mt-4 text-muted-foreground">
-            Trusted by businesses and homeowners across the region.
-          </p>
         </motion.div>
 
-        <div className="mt-16 grid gap-8 md:grid-cols-3">
-          {testimonials.map((testimonial, i) => (
-            <motion.div
-              key={testimonial.name}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.15 + i * 0.12 }}
-              className="group relative rounded-2xl border border-border bg-background p-8 transition-all duration-300 hover:border-amber/20 hover:shadow-lg hover:shadow-amber/5"
-            >
-              <Quotes
-                size={40}
-                className="text-amber/20"
-                weight="fill"
-              />
+        <div className="mt-12 grid gap-6 lg:grid-cols-5">
+          {/* Featured testimonial — large */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="relative overflow-hidden rounded-2xl bg-navy p-8 sm:p-10 lg:col-span-3"
+          >
+            <Quotes
+              size={64}
+              className="absolute right-6 top-6 text-white/[0.04]"
+              weight="fill"
+            />
 
-              <div className="mt-4 flex gap-1">
-                {Array.from({ length: testimonial.rating }).map((_, j) => (
-                  <Star
-                    key={j}
-                    size={16}
-                    className="text-amber"
-                    weight="fill"
-                  />
-                ))}
+            <Stars count={featured.rating} />
+
+            <blockquote className="mt-6 text-lg leading-relaxed text-white/70 sm:text-xl sm:leading-relaxed">
+              &ldquo;{featured.quote}&rdquo;
+            </blockquote>
+
+            <div className="mt-8 flex items-center gap-4 border-t border-white/10 pt-6">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-amber font-heading text-sm font-bold text-navy">
+                {featured.name
+                  .split(" ")
+                  .map((n) => n[0])
+                  .join("")}
               </div>
+              <div>
+                <p className="font-heading font-bold text-white">
+                  {featured.name}
+                </p>
+                <p className="text-sm text-white/40">
+                  {featured.role}, {featured.company}
+                </p>
+              </div>
+            </div>
+          </motion.div>
 
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                &ldquo;{testimonial.quote}&rdquo;
-              </p>
+          {/* Smaller testimonials stacked */}
+          <div className="flex flex-col gap-6 lg:col-span-2">
+            {others.map((t, i) => (
+              <motion.div
+                key={t.name}
+                initial={{ opacity: 0, y: 25 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.25 + i * 0.12 }}
+                className="flex-1 rounded-2xl border border-border bg-background p-6 transition-all duration-300 hover:border-amber/20 hover:shadow-md"
+              >
+                <Stars count={t.rating} />
 
-              <div className="mt-6 border-t border-border pt-6">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-navy font-heading text-sm font-bold text-white">
-                    {testimonial.name
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </div>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+
+                <div className="mt-5 flex items-center gap-3 border-t border-border pt-4">
+                  <Initials name={t.name} />
                   <div>
                     <p className="font-heading text-sm font-bold text-foreground">
-                      {testimonial.name}
+                      {t.name}
                     </p>
                     <p className="text-xs text-muted-foreground">
-                      {testimonial.role}
+                      {t.role}, {t.company}
                     </p>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
