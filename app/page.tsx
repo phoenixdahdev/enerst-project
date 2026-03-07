@@ -1,7 +1,9 @@
 import { Navbar } from "@/components/shared/navbar";
 import { Hero } from "@/components/sections/hero";
+import { LogoMarquee } from "@/components/sections/logo-marquee";
 import { About } from "@/components/sections/about";
 import { Services } from "@/components/sections/services";
+import { Process } from "@/components/sections/process";
 import { WhyChooseUs } from "@/components/sections/why-choose-us";
 import { Projects } from "@/components/sections/projects";
 import { Testimonials } from "@/components/sections/testimonials";
@@ -14,8 +16,10 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <LogoMarquee />
         <About />
         <Services />
+        <Process />
         <WhyChooseUs />
         <Projects />
         <Testimonials />

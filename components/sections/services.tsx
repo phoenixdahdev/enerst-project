@@ -11,6 +11,7 @@ import {
   House,
   ArrowRight,
 } from "@phosphor-icons/react";
+import { ShineBorder } from "@/components/ui/shine-border";
 import type { Icon } from "@phosphor-icons/react";
 
 interface Service {
@@ -88,26 +89,28 @@ export function Services() {
           </p>
         </motion.div>
 
-        {/* Featured service — full width card */}
+        {/* Featured service */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="group mt-12 overflow-hidden rounded-2xl bg-navy"
+          className="group relative mt-12 overflow-hidden rounded-2xl bg-navy"
         >
+          <ShineBorder
+            shineColor={["#E8A838", "#D4952E", "#E8A838"]}
+            borderWidth={1.5}
+            duration={12}
+          />
           <div className="grid items-center lg:grid-cols-5">
-            {/* Icon area */}
             <div className="relative flex items-center justify-center bg-gradient-to-br from-amber to-amber-dark p-12 lg:col-span-2 lg:p-16">
               <featured.icon
                 size={80}
                 className="text-navy"
                 weight="duotone"
               />
-              {/* Decorative circles */}
               <div className="absolute -right-6 -bottom-6 h-32 w-32 rounded-full border border-navy/10" />
               <div className="absolute -right-12 -bottom-12 h-48 w-48 rounded-full border border-navy/5" />
             </div>
-            {/* Content */}
             <div className="p-8 lg:col-span-3 lg:p-12">
               <span className="inline-block rounded-full bg-amber/10 px-3 py-1 text-xs font-semibold text-amber">
                 Featured Service
@@ -128,7 +131,7 @@ export function Services() {
           </div>
         </motion.div>
 
-        {/* Service grid — varied layout */}
+        {/* Service grid */}
         <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, i) => (
             <motion.div
@@ -138,9 +141,7 @@ export function Services() {
               transition={{ duration: 0.5, delay: 0.25 + i * 0.07 }}
               className="group relative overflow-hidden rounded-xl border border-border bg-background p-7 transition-all duration-300 hover:border-amber/30 hover:shadow-lg hover:shadow-amber/5"
             >
-              {/* Hover accent line */}
               <div className="absolute left-0 top-0 h-full w-0.5 bg-amber opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
               <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-amber/10 transition-all duration-300 group-hover:bg-amber">
                 <service.icon
                   size={24}
