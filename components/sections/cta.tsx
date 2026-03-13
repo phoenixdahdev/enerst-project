@@ -24,7 +24,7 @@ export function CTA() {
       />
 
       {/* Amber glow */}
-      <div className="absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber/[0.06] blur-[120px]" />
+      <div className="absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber/6 blur-[120px]" />
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
         <motion.div
@@ -39,8 +39,7 @@ export function CTA() {
           <h2 className="mt-6 font-heading text-3xl font-extrabold text-white sm:text-4xl lg:text-6xl">
             Ready to Build
             <br />
-            Something{" "}
-            <span className="text-amber">Great?</span>
+            Something <span className="text-amber">Great?</span>
           </h2>
 
           <p className="mx-auto mt-4 max-w-xl text-white/40">
@@ -54,11 +53,11 @@ export function CTA() {
             </InteractiveHoverButton>
 
             <a
-              href="tel:+2348059114989"
+              href="tel:+2348059149897"
               className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-white/70 backdrop-blur-sm transition-all hover:border-amber/30 hover:text-amber"
             >
               <Phone size={18} weight="fill" />
-              (234) 80 591 149 89
+              (234) 80 591 498 97
             </a>
           </div>
         </motion.div>

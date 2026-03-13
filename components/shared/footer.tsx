@@ -20,10 +20,11 @@ const serviceLinks = [
 ];
 
 const quickLinks = [
-  { label: "About Us", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "About Us", href: "/#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Browse Properties", href: "/properties" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Contact", href: "/#contact" },
   { label: "Privacy Policy", href: "#" },
   { label: "Terms of Service", href: "#" },
 ];
