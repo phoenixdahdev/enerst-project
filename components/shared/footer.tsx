@@ -1,11 +1,11 @@
 import {
-  Phone,
-  Envelope,
-  MapPin,
-  FacebookLogo,
-  TwitterLogo,
-  InstagramLogo,
-  LinkedinLogo,
+  PhoneIcon,
+  EnvelopeIcon,
+  MapPinIcon,
+  TwitterLogoIcon,
+  InstagramLogoIcon,
+  LinkedinLogoIcon,
+  FacebookLogoIcon,
 } from "@phosphor-icons/react/dist/ssr";
 
 const serviceLinks = [
@@ -15,6 +15,8 @@ const serviceLinks = [
   "Security Systems",
   "Service & Maintenance",
   "House Extensions",
+  "Real estate consultants",
+  "Property management",
 ];
 
 const quickLinks = [
@@ -27,10 +29,10 @@ const quickLinks = [
 ];
 
 const socials = [
-  { icon: FacebookLogo, href: "#", label: "Facebook" },
-  { icon: TwitterLogo, href: "#", label: "Twitter" },
-  { icon: InstagramLogo, href: "#", label: "Instagram" },
-  { icon: LinkedinLogo, href: "#", label: "LinkedIn" },
+  { icon: FacebookLogoIcon, href: "#", label: "Facebook" },
+  { icon: TwitterLogoIcon, href: "#", label: "Twitter" },
+  { icon: InstagramLogoIcon, href: "#", label: "Instagram" },
+  { icon: LinkedinLogoIcon, href: "#", label: "LinkedIn" },
 ];
 
 export function Footer() {
@@ -110,39 +112,39 @@ export function Footer() {
             </h4>
             <ul className="mt-4 space-y-4">
               <li className="flex items-start gap-3">
-                <Phone
+                <PhoneIcon
                   size={18}
                   className="mt-0.5 shrink-0 text-amber"
                   weight="fill"
                 />
                 <a
-                  href="tel:+2348059114989"
+                  href="tel:+2348059149897"
                   className="text-sm text-white/40 transition-colors hover:text-amber"
                 >
-                  (234) 80 591 149 89
+                  (234) 80 591 498 97
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Envelope
+                <EnvelopeIcon
                   size={18}
                   className="mt-0.5 shrink-0 text-amber"
                   weight="fill"
                 />
                 <a
-                  href="mailto:info@epveot.com"
+                  href="mailto:epveotconstruction@gmail.com "
                   className="text-sm text-white/40 transition-colors hover:text-amber"
                 >
-                  info@epveot.com
+                  epveotconstruction@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin
+                <MapPinIcon
                   size={18}
                   className="mt-0.5 shrink-0 text-amber"
                   weight="fill"
                 />
                 <span className="text-sm text-white/40">
-                  Lagos, Nigeria
+                  Anambra state, Nigeria
                 </span>
               </li>
             </ul>
